@@ -1,0 +1,56 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Házikedvenc neve</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="hazikedvenc.name"
+          name="title"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Faj</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="hazikedvenc.faj"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="age">Kor</label>
+        <input
+          class="form-control"
+          id="age"
+          required
+          [(ngModel)]="hazikedvenc.kor"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="gazdaID">Gazda ID</label>
+        <input
+          class="form-control"
+          id="gazdaID"
+          required
+          name="description"
+        />
+      </div>
+
+      <button (click)="saveKedvenc()" class="btn btn-success">Mentés</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>A házikedvenc sikeresen el lett mentve!</h4>
+      <button class="btn btn-success" (click)="newKedvenc()">Másik házikedvenc hozzáadása</button>
+    </div>
+  </div>
+</div>

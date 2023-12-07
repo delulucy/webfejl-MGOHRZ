@@ -1,0 +1,25 @@
+<div class="list row">
+  <div class="col-md-6">
+    <h4>Gazdik</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let gazdi of gazdik; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveGazdi(gazdi, i)"
+      >
+        {{ gazdi.name }}
+      </li>
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllGazdik()">
+      Összes törlése
+    </button>
+  </div>
+  <div class="col-md-6">
+    <app-gazdi-details
+      [viewMode]="true"
+      [currentGazdi]="currentGazdi"
+    ></app-gazdi-details>
+  </div>
+</div>

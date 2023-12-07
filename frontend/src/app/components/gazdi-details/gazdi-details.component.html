@@ -1,0 +1,68 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentGazdi.id">
+    <h4>Gazdi</h4>
+    <div>
+      <label><strong>Név:</strong></label> {{ currentGazdi.name }}
+    </div>
+    <div>
+      <label><strong>Lakhely:</strong></label>
+      {{ currentGazdi.city }}
+    </div>
+
+    <a class="badge badge-warning"
+      routerLink="/gazdik/{{ currentGazdi.id }}">
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentGazdi">
+    <br />
+    <p>Please click on a Gazdi...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentGazdi.id" class="edit-form">
+    <h4>Gazdi</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Név</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentGazdi.name"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Lakhely</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentGazdi.city"
+          name="description"
+        />
+      </div>
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="deleteGazdi()">
+      Törlés
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateGazdi()"
+    >
+      Frissítés
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentGazdi.id">
+    <br />
+    <p>Cannot access this Gazdi...</p>
+  </div>
+</ng-template>

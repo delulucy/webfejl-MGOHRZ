@@ -1,0 +1,35 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Gazdi neve</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="gazdi.name"
+          name="title"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Lakhelye</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="gazdi.city"
+          name="description"
+        />
+      </div>
+
+      <button (click)="saveGazdi()" class="btn btn-success">Mentés</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>A gazdi sikeresen el lett mentve!</h4>
+      <button class="btn btn-success" (click)="newGazdi()">Másik gazdi hozzáadása</button>
+    </div>
+  </div>
+</div>

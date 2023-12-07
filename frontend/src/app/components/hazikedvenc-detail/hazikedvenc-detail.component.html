@@ -1,0 +1,82 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentKedvenc.id">
+    <h4>Házikedvenc</h4>
+    <div>
+      <label><strong>Név:</strong></label> {{ currentKedvenc.name }}
+    </div>
+    <div>
+      <label><strong>Faj:</strong></label>
+      {{ currentKedvenc.faj }}
+    </div>
+    <div>
+      <label><strong>Kor:</strong></label>
+      {{ currentKedvenc.kor }}
+    </div>
+
+    <a class="badge badge-warning"
+       routerLink="/hazikedvencek/{{ currentKedvenc.id }}">
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentKedvenc">
+    <br />
+    <p>Please click on a Házikedvenc...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentKedvenc.id" class="edit-form">
+    <h4>Házikedvenc</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Név</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentKedvenc.name"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Faj</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentKedvenc.faj"
+          name="description"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Kor</label>
+        <input
+          type="text"
+          class="form-control"
+          id="age"
+          [(ngModel)]="currentKedvenc.kor"
+          name="description"
+        />
+      </div>
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="deleteKedvenc()">
+      Törlés
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateKedvenc()"
+    >
+      Frissítés
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentKedvenc.id">
+    <br />
+    <p>Cannot access this Házikedvenc...</p>
+  </div>
+</ng-template>
